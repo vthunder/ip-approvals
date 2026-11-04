@@ -1,0 +1,12 @@
+{
+  "project": "browserid-ng",
+  "base": "ee29eb364a394c800199be750002f6c7d85c644b",
+  "head": "2d513f6562ab88ca20b25cc2dd8da2d4be86c5b3",
+  "patch_sha256": "b63bf1aa1a7f32964d1486a4a7fc85680610f5cf4f7b6fac539f6bdb72b4dbea",
+  "submitted_at": "2026-11-03T20:10:34Z",
+  "wait_days": 14,
+  "recipient": "<avail contact email>",
+  "description": "security audit 2026-11 of browserid-ng (threat model, spec amendments, conformance test vectors, fuzz/property tests, and remediation of all confirmed findings across broker, core, verifiers and SDKs)",
+  "approved_at": null,
+  "objection": null
+}
