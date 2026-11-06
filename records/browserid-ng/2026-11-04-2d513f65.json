@@ -7,6 +7,6 @@
   "wait_days": 14,
   "recipient": "<avail contact email>",
   "description": "security audit 2026-11 of browserid-ng (threat model, spec amendments, conformance test vectors, fuzz/property tests, and remediation of all confirmed findings across broker, core, verifiers and SDKs)",
-  "approved_at": null,
+  "approved_at": "2026-11-06T14:35:58Z",
   "objection": null
 }
