@@ -7,6 +7,6 @@
   "wait_days": 14,
   "recipient": "<avail contact email>",
   "description": "the security audit 2026-11 batch approved on 2026-11-06 plus three follow-up commits found by pre-deploy testing: two rate limits that counted ordinary sign-ins as failures are corrected, three end-to-end tests are updated to the agent SDK's current interface, and a release-check script is added. Everything else is identical to the approved batch; the delta is https://github.com/vthunder/browserid-ng-staging/compare/2d513f6562ab88ca20b25cc2dd8da2d4be86c5b3...ffe633768f29c8e3099b1bd8079a357b8c815786",
-  "approved_at": null,
+  "approved_at": "2026-11-06T19:58:18Z",
   "objection": null
 }
