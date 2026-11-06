@@ -1,0 +1,12 @@
+{
+  "project": "browserid-ng",
+  "base": "a35b012ea2a3d033a7b67791344bc9192b0a2407",
+  "head": "ffe633768f29c8e3099b1bd8079a357b8c815786",
+  "patch_sha256": "f8b74bd062ca5f470ced61601e053f88d5ea2bfce454fe265ed879ce8b4e0026",
+  "submitted_at": "2026-11-06T15:38:34Z",
+  "wait_days": 14,
+  "recipient": "<avail contact email>",
+  "description": "the security audit 2026-11 batch approved on 2026-11-06 plus three follow-up commits found by pre-deploy testing: two rate limits that counted ordinary sign-ins as failures are corrected, three end-to-end tests are updated to the agent SDK's current interface, and a release-check script is added. Everything else is identical to the approved batch; the delta is https://github.com/vthunder/browserid-ng-staging/compare/2d513f6562ab88ca20b25cc2dd8da2d4be86c5b3...ffe633768f29c8e3099b1bd8079a357b8c815786",
+  "approved_at": null,
+  "objection": null
+}
