@@ -1,12 +1,15 @@
 {
   "project": "browserid-ng",
   "base": "a35b012ea2a3d033a7b67791344bc9192b0a2407",
-  "head": "ffe633768f29c8e3099b1bd8079a357b8c815786",
-  "patch_sha256": "f8b74bd062ca5f470ced61601e053f88d5ea2bfce454fe265ed879ce8b4e0026",
+  "head": "7642982d64625a1482164477f570cdf66934e2d4",
+  "patch_sha256": "e95902c11c5686dcc93f2a700f123447148b479126ab78315450184ffefa178a",
   "submitted_at": "2026-11-06T15:38:34Z",
   "wait_days": 14,
   "recipient": "<avail contact email>",
   "description": "the security audit 2026-11 batch approved on 2026-11-06 plus three follow-up commits found by pre-deploy testing: two rate limits that counted ordinary sign-ins as failures are corrected, three end-to-end tests are updated to the agent SDK's current interface, and a release-check script is added. Everything else is identical to the approved batch; the delta is https://github.com/vthunder/browserid-ng-staging/compare/2d513f6562ab88ca20b25cc2dd8da2d4be86c5b3...ffe633768f29c8e3099b1bd8079a357b8c815786",
   "approved_at": "2026-11-06T19:58:18Z",
-  "objection": null
+  "objection": null,
+  "head_approved": "ffe633768f29c8e3099b1bd8079a357b8c815786",
+  "patch_sha256_approved": "f8b74bd062ca5f470ced61601e053f88d5ea2bfce454fe265ed879ce8b4e0026",
+  "note": "Record moved from the approved head ffe63376 to 7642982d by Dan's decision on 2026-11-06 (option 1: build configuration only). The two added commits change no source: 339b78d pins the Rust toolchain to 1.93 in the Dockerfile, two workflows and Cargo.toml rust-version (the approved dependency update needs rustc >= 1.89; CI and the image pinned 1.85); 7642982 bumps sdk/wallet to 0.6.0 (CI publish drift gate) and adds two steps to scripts/release-check.sh. Delta: https://github.com/vthunder/browserid-ng-staging/compare/ffe633768f29c8e3099b1bd8079a357b8c815786...7642982d64625a1482164477f570cdf66934e2d4"
 }
