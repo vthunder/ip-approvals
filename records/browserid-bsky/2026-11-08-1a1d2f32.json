@@ -1,0 +1,12 @@
+{
+  "project": "browserid-bsky",
+  "base": "1f34ad8be85b54f30589284030c3d02538e24a6f",
+  "head": "1a1d2f32e69f17288d465c9645f18333c14a8794",
+  "patch_sha256": "e5a30ef98799a6b51a63a6a9e57dbff4546a906e3352f2561394581734e781ee",
+  "submitted_at": "2026-11-08T11:53:14Z",
+  "wait_days": 14,
+  "recipient": "<avail contact email>",
+  "description": "release pipeline in CI",
+  "approved_at": null,
+  "objection": null
+}
