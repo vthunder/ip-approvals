@@ -1,0 +1,12 @@
+{
+  "project": "browserid-pay",
+  "base": "e7e1a73b0d411c6893e051d69ea57f5962d8a983",
+  "head": "af32cc4b27cd8bb9aa4c13325aa84b072a644cb2",
+  "patch_sha256": "5a25e22f2a40c74b4fb7ac7fef7182c913034bafbfa92c2ef756f466c7b2ae56",
+  "submitted_at": "2026-11-08T11:53:06Z",
+  "wait_days": 14,
+  "recipient": "<avail contact email>",
+  "description": "release pipeline in CI, lockfile sync, a test fix",
+  "approved_at": null,
+  "objection": null
+}
