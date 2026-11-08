@@ -1,0 +1,35 @@
+# Rewrites the Status section of README.md: every project's batch, its
+# mirror checks, approval state, merge and deploys (scripts/status.py).
+# Commits only when the table changed.
+name: status
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  push:
+    branches: [main]
+    paths: ["records/**", "scripts/**", ".github/workflows/status.yml"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: status
+  cancel-in-progress: false
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: update README status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/status.py --readme
+      - name: commit if changed
+        run: |
+          git diff --quiet README.md && { echo "no change"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qm "status: update" README.md
+          git pull -q --rebase && git push -q
