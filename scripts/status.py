@@ -57,6 +57,11 @@ def mirror_checks(project, sha, required):
     latest = {}
     for run in data.get("check_runs", []):
         latest.setdefault(run["name"], run)  # API lists newest first
+    if not required:
+        # Branch protection is readable only with admin rights (not by the
+        # workflow token): count every release-candidate job on the commit,
+        # which is the same set (each is required at merge or before submission).
+        required = sorted(n for n in latest if n.startswith("rc / "))
     ok = failed = pending = 0
     bad = []
     for name in required:
