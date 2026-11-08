@@ -1,0 +1,12 @@
+{
+  "project": "sbo",
+  "base": "4033e1fa7a883b4bbf10fcb1be4191238416e0b7",
+  "head": "55243ddc97d9d75b91fede6a967db418e1794bba",
+  "patch_sha256": "b000de49812fc43b065c543d39955c8f55a978866f690e30abddf7a8a1fd9853",
+  "submitted_at": "2026-11-08T11:52:58Z",
+  "wait_days": 14,
+  "recipient": "<avail contact email>",
+  "description": "security audit 2026-11 and its fixes, release pipeline in CI",
+  "approved_at": null,
+  "objection": null
+}
