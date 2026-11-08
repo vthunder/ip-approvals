@@ -1,0 +1,12 @@
+{
+  "project": "mingo",
+  "base": "e0e6d42bb0cac64d92f0c47efb89e5f85cff6453",
+  "head": "65b39a1d6db9b8dc96d51e08f3d41435d95e22f0",
+  "patch_sha256": "b35bd58fc681929494e1f5369fc7d255434b6f9539c9fc8763eb6b6594de119a",
+  "submitted_at": "2026-11-08T11:52:49Z",
+  "wait_days": 14,
+  "recipient": "<avail contact email>",
+  "description": "release pipeline in CI, dependency security updates, a build fix for the sbo daemon image",
+  "approved_at": null,
+  "objection": null
+}
