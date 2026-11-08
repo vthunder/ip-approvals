@@ -1,0 +1,12 @@
+{
+  "project": "browserid-ng",
+  "base": "70e77906f5eed29b00dd19aa3dbb2efb5b02b681",
+  "head": "ccf475a495cf37b08eb4e424fd1c352a74445570",
+  "patch_sha256": "8048fde63c611724347949d335b4b274b86a8e8eae2cb13f75e5ea21f9f4ebe9",
+  "submitted_at": "2026-11-08T11:52:41Z",
+  "wait_days": 14,
+  "recipient": "<avail contact email>",
+  "description": "release pipeline in CI, deterministic offline tests, exact toolchain pin, test fixes",
+  "approved_at": null,
+  "objection": null
+}
