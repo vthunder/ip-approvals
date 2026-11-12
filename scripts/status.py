@@ -103,7 +103,8 @@ def record_state(rec):
     if rec.get("objection"):
         return "objection", "objection: " + str(rec["objection"])
     if rec.get("approved_at"):
-        return "approved", "approved " + rec["approved_at"][:10]
+        how = "exempt build-config" if rec.get("exempt") else "approved"
+        return "approved", how + " " + rec["approved_at"][:10]
     due = parse_time(rec["submitted_at"]) + dt.timedelta(days=rec.get("wait_days", 14))
     if NOW >= due:
         return "approved", f"deemed approved {due:%Y-%m-%d}"

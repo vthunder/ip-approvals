@@ -7,6 +7,12 @@ refuses the merge unless a record matches the PR's diff hash and is either
 past its objection window or explicitly approved. Records are written by
 `sandmill-infra/bin/ip-submit.sh`.
 
+Build configuration (own package versions, compiler/base-image/CI-action
+pins, dependency updates for upstream security fixes, CI/deployment
+configuration) needs no prior approval: see
+[policy/build-config.md](policy/build-config.md). Those records carry
+`"exempt": "build-config"`.
+
 The Status table below is rewritten by `.github/workflows/status.yml`
 (`scripts/status.py`) every 30 minutes and whenever a record changes.
 
