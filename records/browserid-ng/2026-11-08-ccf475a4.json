@@ -7,6 +7,7 @@
   "wait_days": 14,
   "recipient": "<avail contact email>",
   "description": "release pipeline in CI, deterministic offline tests, exact toolchain pin, test fixes",
-  "approved_at": null,
-  "objection": null
+  "approved_at": "2026-11-12T21:41:28Z",
+  "objection": null,
+  "note": "Approved by Avail by email (reported by Dan on 2026-11-12)."
 }
