@@ -14,6 +14,6 @@
   "exempt_override": [
     "Cargo.toml"
   ],
-  "disclose": "browserid-ng: rusqlite 0.32 -> 0.41.1 for the bundled SQLite fix (CVE-2026-119375); the upgrade also needed one rusqlite feature flag (fallible_uint) to keep the previous behaviour, no source changes",
+  "disclose": "rusqlite 0.32 -> 0.41.1 for the bundled SQLite fix (CVE-2026-119375); the upgrade also needed one rusqlite feature flag (fallible_uint) to keep the previous behaviour, no source changes",
   "disclosed_in": null
 }
