@@ -12,10 +12,12 @@ head has reached the canonical main, and the latest deploy runs on main.
 
 Needs `gh` authenticated (GH_TOKEN in CI). Everything it reads is public.
 """
+import base64
 import datetime as dt
 import glob
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -28,6 +30,10 @@ PRESUBMIT_ONLY = {"sbo": ["rc / supply-chain"]}
 PRESUBMIT_DEFAULT = ["rc / audit"]
 # Projects that have no deploy workflow of their own.
 DEPLOYS_ELSEWHERE = {"sbo": "via mingo (pinned SBO_REV)"}
+# Advisory-ignore lists; every entry carries "Review: YYYY-MM-DD".
+IGNORE_FILES = [".cargo/audit.toml", "deny.toml", ".github/supply-chain/npm-ignore.txt",
+                ".github/supply-chain/pip-ignore.txt"]
+REVIEW = re.compile(r"[Rr]eview(?: by)?:?\s*(\d{4}-\d{2}-\d{2})")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NOW = dt.datetime.now(dt.timezone.utc)
 
@@ -131,6 +137,32 @@ def deploys(project):
     return f"{len(latest)} ok, last {last}"
 
 
+def ignore_reviews(project):
+    """The earliest review date among main's advisory ignores: the trigger
+    to re-evaluate them (upgrade, or extend with a new reason)."""
+    dates = []
+    for f in IGNORE_FILES:
+        c = gh(f"repos/{OWNER}/{project}/contents/{f}?ref=main")
+        if c and c.get("content"):
+            dates += REVIEW.findall(base64.b64decode(c["content"]).decode("utf-8", "replace"))
+    if not dates:
+        return ""
+    first = min(dates)
+    if first <= f"{NOW:%Y-%m-%d}":
+        return f"REVIEW DUE ({first})"
+    return f"next review {first}"
+
+
+def pending_disclosures():
+    out = []
+    for f in sorted(glob.glob(os.path.join(ROOT, "records", "*", "*.json"))):
+        with open(f) as fh:
+            r = json.load(fh)
+        if r.get("disclose") and not r.get("disclosed_in"):
+            out.append(f"{r['project']}: {r['disclose']} ([record]({os.path.relpath(f, ROOT)}))")
+    return out
+
+
 def local_stamp(project, sha):
     d = os.path.expanduser(f"~/ip-submissions/.verified/{project}/{sha}")
     return os.path.isfile(d)
@@ -144,7 +176,8 @@ def project_status(project):
     branch = gh(f"repos/{OWNER}/{project}-staging/branches/{BATCH_BRANCH}")
     head = branch["commit"]["sha"] if branch else None
 
-    row = {"project": project, "main": main_sha, "deploy": deploys(project), "record": rec_path}
+    row = {"project": project, "main": main_sha, "deploy": deploys(project), "record": rec_path,
+           "ignores": ignore_reviews(project)}
     rec_head = rec["head"] if rec else None
     merged = bool(rec_head) and in_main(project, rec_head)
 
@@ -173,19 +206,21 @@ def project_status(project):
 
 def terminal(rows):
     cols = [("project", "repo"), ("stage", "stage"), ("head", "head"), ("checks", "mirror checks"),
-            ("detail", "approval"), ("main", "main"), ("deploy", "deploys")]
+            ("detail", "approval"), ("main", "main"), ("deploy", "deploys"), ("ignores", "advisory ignores")]
     widths = {k: max(len(h), *(len(str(r.get(k, ""))) for r in rows)) for k, h in cols}
     print("  ".join(h.ljust(widths[k]) for k, h in cols))
     print("  ".join("-" * widths[k] for k, _ in cols))
     for r in rows:
         print("  ".join(str(r.get(k, "")).ljust(widths[k]) for k, _ in cols))
+    for d in pending_disclosures():
+        print("to disclose in the next submission:", re.sub(r" \(\[record\].*", "", d))
 
 
 def markdown(rows):
     icon = {"merged": "✅", "ready to merge": "🟢", "awaiting approval": "⏳", "in progress": "🛠️",
             "OBJECTION": "⛔", "no batch": "·"}
-    out = ["| repo | stage | head | mirror checks | approval | main | deploys |",
-           "|---|---|---|---|---|---|---|"]
+    out = ["| repo | stage | head | mirror checks | approval | main | deploys | advisory ignores |",
+           "|---|---|---|---|---|---|---|---|"]
     for r in rows:
         p = r["project"]
         head = f"[`{r['head']}`](https://github.com/{OWNER}/{p}-staging/commit/{r['head']})" if r["head"] else ""
@@ -193,7 +228,10 @@ def markdown(rows):
         rec = f" ([record]({r['record']}))" if r.get("record") else ""
         deploy = f"[{r['deploy']}](https://github.com/{OWNER}/{p}/actions)"
         out.append(f"| [{p}](https://github.com/{OWNER}/{p}) | {icon.get(r['stage'], '')} {r['stage']} | {head} "
-                   f"| {r['checks']} | {r['detail']}{rec} | {main} | {deploy} |")
+                   f"| {r['checks']} | {r['detail']}{rec} | {main} | {deploy} | {r['ignores']} |")
+    disc = pending_disclosures()
+    if disc:
+        out += ["", "To mention in the next submission email:", ""] + [f"- {d}" for d in disc]
     return "\n".join(out)
 
 
