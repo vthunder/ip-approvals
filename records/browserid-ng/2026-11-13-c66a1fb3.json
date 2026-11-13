@@ -1,0 +1,19 @@
+{
+  "project": "browserid-ng",
+  "base": "270c355c1962487c9251ac9d38a8142338728bfd",
+  "head": "c66a1fb379aaedab3c1f6c4ecf1ea09e7896f6fd",
+  "patch_sha256": "0d7775a1483df8413f7ecc885be562bd29f8ff4d872b9847f9c5afbcf9f89a4d",
+  "submitted_at": "2026-11-13T18:26:55Z",
+  "wait_days": 0,
+  "recipient": null,
+  "description": "rusqlite 0.41.1 / libsqlite3-sys 0.39.1 (SQLite CVE-2026-119375); hickory 2026-11 advisories ignored until the 0.26 upgrade, review 2026-12-15",
+  "approved_at": "2026-11-13T18:26:55Z",
+  "objection": null,
+  "exempt": "build-config",
+  "basis": "policy/build-config.md",
+  "exempt_override": [
+    "Cargo.toml"
+  ],
+  "disclose": "browserid-ng: rusqlite 0.32 -> 0.41.1 for the bundled SQLite fix (CVE-2026-119375); the upgrade also needed one rusqlite feature flag (fallible_uint) to keep the previous behaviour, no source changes",
+  "disclosed_in": null
+}
