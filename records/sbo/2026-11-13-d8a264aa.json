@@ -1,0 +1,14 @@
+{
+  "project": "sbo",
+  "base": "041eceaa77fc15b455016d90d71a1cf80d62e130",
+  "head": "d8a264aac0e3e447c92a7f6fcf4d20cf63cf10f4",
+  "patch_sha256": "0666fc6d89c33cb810c9efd6721981cc20c14db97e03eda53176283f00811038",
+  "submitted_at": "2026-11-13T18:26:41Z",
+  "wait_days": 0,
+  "recipient": null,
+  "description": "rust-toolchain action pinned to master where a toolchain input is passed (conformance ran rustc 1.85); hickory 2026-11 advisories ignored until the 0.26 upgrade, review 2026-12-15",
+  "approved_at": "2026-11-13T18:26:41Z",
+  "objection": null,
+  "exempt": "build-config",
+  "basis": "policy/build-config.md"
+}
