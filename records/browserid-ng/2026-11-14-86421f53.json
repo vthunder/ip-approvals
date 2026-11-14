@@ -1,0 +1,29 @@
+{
+  "project": "browserid-ng",
+  "base": "e9e7a45ac1272acbbf4b408dd364fee76b5502ec",
+  "head": "86421f5375fab4d7877428235c9136dd4637cddf",
+  "patch_sha256": "f08b1cf7bc6df866da71855d8e337fdce4d1f895ae6e8eda9e002d5318a28505",
+  "submitted_at": "2026-11-14T21:51:37Z",
+  "wait_days": 0,
+  "recipient": null,
+  "description": "Social preview image (og:image) and Open Graph/Twitter card meta tags on the browserid.me marketing pages; markup and an image only, no program logic",
+  "approved_at": "2026-11-14T21:51:37Z",
+  "objection": null,
+  "exempt": "build-config",
+  "basis": "policy/build-config.md",
+  "exempt_override": [
+    "marketing/img/browserid.png",
+    "marketing/about.html",
+    "marketing/contact.html",
+    "marketing/demos.html",
+    "marketing/developers.html",
+    "marketing/domains.html",
+    "marketing/gate.html",
+    "marketing/index.html",
+    "marketing/mcp-demo.html",
+    "marketing/principles.html",
+    "marketing/privacy.html"
+  ],
+  "disclose": "added a social-preview image and Open Graph/Twitter card meta tags to the browserid.me marketing pages (HTML head markup and one PNG); no program logic",
+  "disclosed_in": null
+}
