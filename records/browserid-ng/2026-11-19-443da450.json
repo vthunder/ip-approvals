@@ -1,0 +1,14 @@
+{
+  "project": "browserid-ng",
+  "base": "1d1eabf83accce507bcb4642c385ca21ec5e860d",
+  "head": "443da45056247cdfae68e908beb4a20174e2c2aa",
+  "patch_sha256": "1e8c9720f7da727594f80a96f7119acae9cf860b856f0c317af705a4341de292",
+  "submitted_at": "2026-11-19T10:38:10Z",
+  "wait_days": 0,
+  "recipient": null,
+  "description": "Build configuration only. (1) marketing image base nginx 1.27 -> 1.30.7 for NGINX2Root: CVE-2026-123007, CVE-2026-123633, CVE-2026-123634, CVE-2026-121810, CVE-2026-113425. (2) Cargo.lock: lettre 0.11.23 -> 0.11.24 for RUSTSEC-2026-0560..0565. (3) .cargo/audit.toml: ignore hickory-proto RUSTSEC-2026-0549/0550/0551 (no fixed release; hickory's DNSSEC validator is not used; Review: 2026-12-15). (4) CI: pin the broker e2e job to ubuntu-24.04 because Playwright has no chromium for ubuntu-latest (26.04).",
+  "approved_at": "2026-11-19T10:38:10Z",
+  "objection": null,
+  "exempt": "build-config",
+  "basis": "policy/build-config.md"
+}
